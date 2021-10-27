@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person List</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 5px;
+        text-align: left;
+    }
+</style>
+<body>
+<h3>Person</h3>
+<a href="/person">Add a new person !</a>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>age</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.id}">id</td>
+        <td th:text="${person.firstname}">first name</td>
+        <td th:text="${person.lastname}">last name</td>
+        <td th:text="${person.age}">birthday</td>
+        <td><a th:href="@{/person(id=${person.id})}">Edit</a></td>
+        <td><a th:href="@{/person/delete(id=${person.id})}">Remove</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+</body>
+</html>
